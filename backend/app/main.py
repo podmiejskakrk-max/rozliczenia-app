@@ -102,10 +102,13 @@ app = FastAPI(
     lifespan=lifespan,
 )
 
-origins = [o.strip() for o in settings.CORS_ORIGINS.split(",")]
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins,
+    allow_origins=[
+        "https://rozliczenia-appx22.vercel.app",
+        "http://localhost:5173",
+        "http://localhost:3000",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
